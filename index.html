@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yassah Accounting Firm</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#" class="logo" onclick="showPage('home')">Yassah Accounting Firm</a>
+        <div class="nav-links">
+          <a href="#" onclick="showPage('home')">Home</a>
+          <a href="#" onclick="showPage('faq')">FAQ</a>
+          <a href="#" onclick="showPage('contact')">Contact Us</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Home Page -->
+      <div id="home-page" class="page active">
+        <section class="hero">
+          <div class="hero-content">
+            <h1>Yassah Accounting Firm</h1>
+            <p>Your Trusted Partner for Professional Accounting Services</p>
+            <div class="hero-buttons">
+              <a href="#" onclick="showPage('contact')" class="btn-primary">Get Started</a>
+              <a href="#" onclick="showPage('faq')" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="services">
+          <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-item">
+              <img src="pics/yas1.jpeg" alt="Tax Preparation" />
+              <div class="service-content">
+                <div class="service-icon">📊</div>
+                <h3>Tax Preparation</h3>
+                <p>Providing accurate and timely tax preparation services for individuals, businesses, and organizations. I assist clients in complying with tax regulations, maximizing eligible deductions, minimizing tax liabilities, and ensuring all tax returns are filed correctly and on schedule.</p>
+              </div>
+            </div>
+            <div class="service-item reverse">
+              <div class="service-content">
+                <div class="service-icon">📝</div>
+                <h3>Bookkeeping</h3>
+                <p>Offering reliable bookkeeping services that help businesses maintain accurate financial records. Services include recording daily transactions, managing accounts payable and receivable, bank reconciliations, payroll support, and preparing financial reports to support informed business decisions.</p>
+              </div>
+              <img src="pics/yas2.webp" alt="Bookkeeping" />
+            </div>
+            <div class="service-item">
+              <img src="pics/yas3.webp" alt="Financial Consulting" />
+              <div class="service-content">
+                <div class="service-icon">📈</div>
+                <h3>Financial Consulting</h3>
+                <p>Delivering strategic financial advisory services to help individuals and businesses achieve their financial goals. I provide guidance on budgeting, cash flow management, financial planning, investment evaluation, cost reduction strategies, and business growth initiatives.</p>
+              </div>
+            </div>
+            <div class="service-item reverse">
+              <div class="service-content">
+                <div class="service-icon">🛡️</div>
+                <h3>Audit Services</h3>
+                <p>Conducting thorough and independent audits to evaluate the accuracy, integrity, and compliance of financial records and internal controls. Audit services help organizations identify risks, improve operational efficiency, ensure regulatory compliance, and enhance stakeholder confidence.</p>
+              </div>
+              <img src="pics/yas4.webp" alt="Audit Services" />
+            </div>
+          </div>
+        </section>
+
+        <section class="cta">
+          <div class="container">
+            <h2>Ready to Work With Us?</h2>
+            <p>Contact us today to discuss how we can help with your accounting needs.</p>
+            <a href="#" onclick="showPage('contact')" class="btn-white">Contact Us</a>
+          </div>
+        </section>
+      </div>
+
+      <!-- FAQ Page -->
+      <div id="faq-page" class="page">
+        <div class="container">
+          <h1>Frequently Asked Questions</h1>
+          <p>Find answers to common questions about our accounting services</p>
+          <div class="faq-container">
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                What accounting services do you offer?
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                <p>We offer a comprehensive range of accounting services including tax preparation, bookkeeping, financial consulting, audit services, payroll processing, and business advisory services for both individuals and businesses.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                How much do your services cost?
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                <p>Our pricing is customized based on the specific needs of each client. We offer competitive rates and provide transparent quotes after an initial consultation to understand your requirements.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                Do you work with small businesses?
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes, we specialize in working with small to medium-sized businesses. We understand the unique challenges small businesses face and provide tailored solutions to help them grow and succeed.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                What documents do I need for tax preparation?
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                <p>For individual tax preparation, we typically need W-2 forms, 1099 forms, investment statements, deduction receipts, and previous tax returns. For businesses, we require financial statements, expense records, payroll information, and relevant business documents.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                How long does it take to complete tax returns?
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                <p>The timeline varies depending on the complexity of your tax situation. Simple individual returns can be completed within a few days, while complex business returns may take 1-2 weeks. We work efficiently to meet all filing deadlines.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                Do you offer virtual or remote services?
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes, we offer both in-person and virtual services. We can securely handle your accounting needs through video calls, secure document sharing, and online collaboration tools, making it convenient for clients anywhere.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                Are you certified and licensed?
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes, our firm is fully licensed and our accountants hold relevant professional certifications. We stay updated with the latest tax laws and accounting standards to provide you with accurate and compliant services.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                Can you help with tax planning throughout the year?
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                <p>Absolutely! We provide year-round tax planning services to help you minimize tax liability and maximize savings. We recommend regular check-ins to optimize your financial strategy.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                What industries do you specialize in?
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                <p>We have experience working with various industries including retail, healthcare, technology, construction, professional services, and more. Our diverse expertise allows us to understand industry-specific accounting needs.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                How do I get started with your services?
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                <p>Getting started is easy! Simply contact us through our website, email, or phone. We'll schedule an initial consultation to discuss your needs and provide a customized proposal for our services.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-contact">
+            <h3>Still Have Questions?</h3>
+            <p>Can't find the answer you're looking for? Please reach out to our team directly.</p>
+            <a href="mailto:abassshaban45@gmail.com" class="btn-primary">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Page -->
+      <div id="contact-page" class="page">
+        <div class="container">
+          <h1>Contact Us</h1>
+          <p>Get in touch with us for your accounting needs</p>
+          <div class="contact-grid">
+            <div class="contact-info">
+              <h2>Get In Touch</h2>
+              <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div>
+                  <h3>Email</h3>
+                  <a href="mailto:abassshaban45@gmail.com">abassshaban45@gmail.com</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div>
+                  <h3>Phone</h3>
+                  <p>+1 (555) 123-4567</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div>
+                  <h3>Office</h3>
+                  <p>Moi Avenue<br />Suite 456<br />Nairobi, Kenya</p>
+                </div>
+              </div>
+              <div class="office-hours">
+                <h3>Office Hours</h3>
+                <p>Monday - Friday: 9:00 AM - 5:00 PM<br />Saturday: 10:00 AM - 2:00 PM<br />Sunday: Closed</p>
+              </div>
+            </div>
+            <div class="contact-form">
+              <h2>Send Us a Message</h2>
+              <form onsubmit="handleContactSubmit(event)">
+                <div class="form-group">
+                  <label for="name">Your Name</label>
+                  <input type="text" id="name" name="name" required placeholder="John Doe" />
+                </div>
+                <div class="form-group">
+                  <label for="email">Your Email</label>
+                  <input type="email" id="email" name="email" required placeholder="john@example.com" />
+                </div>
+                <div class="form-group">
+                  <label for="subject">Subject</label>
+                  <input type="text" id="subject" name="subject" required placeholder="How can we help you?" />
+                </div>
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" required rows="5" placeholder="Tell us about your accounting needs..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Send Message</button>
+              </form>
+              <p class="form-note">Your message will be sent to abassshaban45@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-info">
+            <h3>Yassah Accounting Firm</h3>
+            <p>Professional Accounting Services</p>
+          </div>
+          <div class="social-links">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Yassah Accounting Firm. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
