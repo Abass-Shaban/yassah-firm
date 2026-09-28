@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yassah Admin Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script>
+    // Check authentication immediately on page load
+    if (localStorage.getItem('adminAuthenticated') !== 'true') {
+      window.location.href = 'index.html';
+    }
+  </script>
+</head>
+<body>
+  <div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Yassah Admin</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-section="dashboard">
+          <span class="nav-icon">📊</span>
+          Dashboard
+        </a>
+        <a href="#" class="nav-item" data-section="referrals">
+          <span class="nav-icon">👥</span>
+          Referrals
+        </a>
+        <a href="#" class="nav-item" data-section="appointments">
+          <span class="nav-icon">📅</span>
+          Appointments
+        </a>
+        <a href="#" class="nav-item" data-section="newsletter">
+          <span class="nav-icon">📧</span>
+          Newsletter
+        </a>
+        <a href="#" class="nav-item" data-section="charts">
+          <span class="nav-icon">📈</span>
+          Charts
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="logout-btn">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="admin-header">
+        <h1>Dashboard</h1>
+        <div class="header-actions">
+          <button class="refresh-btn">Refresh Data</button>
+        </div>
+      </header>
+
+      <!-- Dashboard Section -->
+      <section id="dashboard-section" class="content-section active">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-info">
+              <h3 id="stat-referrals">0</h3>
+              <p>Total Referrals</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <div class="stat-info">
+              <h3 id="stat-appointments">0</h3>
+              <p>Appointments</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">📧</div>
+            <div class="stat-info">
+              <h3 id="stat-newsletter">0</h3>
+              <p>Newsletter Subscribers</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="recent-activity">
+          <h2>Recent Activity</h2>
+          <div class="activity-list" id="activity-list">
+            <p>Loading...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Referrals Section -->
+      <section id="referrals-section" class="content-section">
+        <h2>Referrals</h2>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Referred Email</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="referrals-table">
+              <tr><td colspan="6">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Appointments Section -->
+      <section id="appointments-section" class="content-section">
+        <h2>Appointments</h2>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Service</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="appointments-table">
+              <tr><td colspan="8">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Newsletter Section -->
+      <section id="newsletter-section" class="content-section">
+        <h2>Newsletter Subscribers</h2>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Interest</th>
+                <th>Subscription Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="newsletter-table">
+              <tr><td colspan="6">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Charts Section -->
+      <section id="charts-section" class="content-section">
+        <h2>Data Visualization</h2>
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h3>Referrals by Status</h3>
+            <canvas id="referralsChart"></canvas>
+          </div>
+          <div class="chart-card">
+            <h3>Appointments by Status</h3>
+            <canvas id="appointmentsChart"></canvas>
+          </div>
+          <div class="chart-card">
+            <h3>Newsletter by Interest</h3>
+            <canvas id="newsletterChart"></canvas>
+          </div>
+          <div class="chart-card">
+            <h3>Monthly Activity</h3>
+            <canvas id="activityChart"></canvas>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Status Update Modal -->
+  <div id="status-modal" class="modal">
+    <div class="modal-content">
+      <h3>Update Status</h3>
+      <form id="status-form">
+        <div class="form-group">
+          <label for="status-select">Status</label>
+          <select id="status-select" required>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+          <button type="submit" class="btn-primary">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

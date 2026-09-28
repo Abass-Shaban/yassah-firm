@@ -1,0 +1,26 @@
+[
+  {
+    "id": "mtx427rr64hw7wa6ml9",
+    "name": "abass",
+    "email": "abassshaban45@gmail.com",
+    "interest": "general",
+    "subscriptionDate": "2026-09-11T15:28:23.511Z",
+    "isActive": true
+  },
+  {
+    "id": "mtxbkaghkfhng2fizq",
+    "name": "abass",
+    "email": "abass23@gmail.com",
+    "interest": "tax",
+    "subscriptionDate": "2026-09-11T18:58:24.113Z",
+    "isActive": true
+  },
+  {
+    "id": "mul3u6gouf3729dowt",
+    "name": "Test",
+    "email": "test@test.com",
+    "interest": "general",
+    "subscriptionDate": "2026-09-28T10:28:36.793Z",
+    "isActive": true
+  }
+]

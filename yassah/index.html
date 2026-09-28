@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yassah Accounting Firm - Login</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="admin-login-container">
+      <div class="admin-login-upper">
+        <div class="admin-login-image">
+          <img src="pics/yas4.webp" alt="Yassah Accounting Firm">
+        </div>
+      </div>
+      <div class="admin-login-lower">
+        <div class="admin-login-form-container">
+          <h2>Client Login</h2>
+          <form id="loginForm" onsubmit="handleUserLogin(event)">
+            <div class="form-group">
+              <label for="userEmail">Email</label>
+              <input type="email" id="userEmail" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+              <label for="userPassword">Password</label>
+              <input type="password" id="userPassword" placeholder="Enter your password" required>
+            </div>
+            <div class="form-actions">
+              <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn-primary">Login</button>
+          </form>
+          <p class="login-footer">Don't have an account? <a href="admin-signup.html" style="color: #EBB93B;">Sign Up</a></p>
+          <p class="login-footer">© 2026 Yassah Accounting Firm</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function handleUserLogin(event) {
+        event.preventDefault();
+        const email = document.getElementById('userEmail').value;
+        const password = document.getElementById('userPassword').value;
+        
+        if (email && password) {
+          localStorage.setItem('userLoggedIn', 'true');
+          localStorage.setItem('userEmail', email);
+          alert('Login successful! Redirecting to dashboard...');
+          window.location.href = 'dashboard.html';
+        } else {
+          alert('Please enter both email and password.');
+        }
+      }
+
+      // Check if already logged in
+      if (localStorage.getItem('userLoggedIn') === 'true') {
+        window.location.href = 'dashboard.html';
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yassah Admin - Sign Up</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="admin-login-container">
+    <!-- Upper Div with Image -->
+    <div class="admin-login-upper">
+      <div class="admin-login-image">
+        <img src="../yassah/pics/yas4.webp" alt="Yassah Admin">
+      </div>
+    </div>
+
+    <!-- Lower Div with Sign Up Form -->
+    <div class="admin-login-lower">
+      <div class="admin-login-form-container">
+        <h2>Admin Sign Up</h2>
+        <form id="signup-form" onsubmit="handleAdminSignup(event)">
+          <div class="form-group">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" placeholder="Enter your full name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email" required />
+          </div>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Choose a username" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Create a password" required />
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" placeholder="Confirm your password" required />
+          </div>
+          <button type="submit" class="btn-primary">Sign Up</button>
+        </form>
+        <p class="login-footer">Already have an account? <a href="index.html" style="color: #EBB93B;">Login</a></p>
+        <p class="login-footer">© 2026 Yassah Accounting Firm</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Admin Signup Handler
+    function handleAdminSignup(event) {
+      event.preventDefault();
+      
+      const fullName = document.getElementById('full-name').value;
+      const email = document.getElementById('email').value;
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      
+      // Validation
+      if (!fullName || !email || !username || !password || !confirmPassword) {
+        alert('Please fill in all fields.');
+        return;
+      }
+      
+      if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+      }
+      
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters long.');
+        return;
+      }
+      
+      // Store admin credentials (in production, this should be handled server-side)
+      localStorage.setItem('adminFullName', fullName);
+      localStorage.setItem('adminEmail', email);
+      localStorage.setItem('adminUsername', username);
+      localStorage.setItem('adminPassword', password);
+      localStorage.setItem('adminAuthenticated', 'true');
+      
+      alert('Sign up successful! Redirecting to login...');
+      
+      // Redirect to login page
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

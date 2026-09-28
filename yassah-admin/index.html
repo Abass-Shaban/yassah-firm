@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yassah Admin - Login</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="admin-login-container">
+    <!-- Upper Div with Image -->
+    <div class="admin-login-upper">
+      <div class="admin-login-image">
+        <img src="../yassah/pics/yas4.webp" alt="Yassah Admin">
+      </div>
+    </div>
+
+    <!-- Lower Div with Login Form -->
+    <div class="admin-login-lower">
+      <div class="admin-login-form-container">
+        <h2>Admin Login</h2>
+        <form id="login-form" onsubmit="handleAdminLogin(event)">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter your username" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required />
+          </div>
+          <div class="form-actions">
+            <a href="forgot-password.html" class="forgot-password">Forgot Password?</a>
+          </div>
+          <button type="submit" class="btn-primary">Login</button>
+        </form>
+        <p class="login-footer">Don't have an account? <a href="signup.html" style="color: #EBB93B;">Sign Up</a></p>
+        <p class="login-footer">© 2026 Yassah Accounting Firm</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Admin Login Handler
+    function handleAdminLogin(event) {
+      event.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      console.log('Login attempt:', username);
+      
+      // Validate against stored credentials
+      const storedUsername = localStorage.getItem('adminUsername');
+      const storedPassword = localStorage.getItem('adminPassword');
+      
+      console.log('Stored credentials:', storedUsername, storedPassword ? 'exists' : 'none');
+      
+      // For first-time setup, allow admin/admin123 as default
+      const defaultUsername = 'admin';
+      const defaultPassword = 'admin123';
+      
+      const isValidDefault = (username === defaultUsername && password === defaultPassword);
+      const isValidStored = (username === storedUsername && password === storedPassword);
+      
+      console.log('Validation - Default:', isValidDefault, 'Stored:', isValidStored);
+      
+      if (isValidDefault || isValidStored) {
+        // Store admin session
+        localStorage.setItem('adminAuthenticated', 'true');
+        localStorage.setItem('adminUsername', username);
+        
+        alert('Login successful! Redirecting to admin dashboard...');
+        
+        // Redirect to dashboard (using index.html as the dashboard)
+        console.log('Redirecting to dashboard.html');
+        window.location.href = 'index.html?dashboard=true';
+      } else {
+        alert('Invalid username or password. Please try again.\n\nDefault: admin / admin123');
+      }
+    }
+  </script>
+</body>
+</html>
